@@ -134,7 +134,7 @@ export default function StudentLayout({ children }: {children: React.ReactNode;}
         <div className="container mx-auto px-4">
           {/* Profile Picture */}
           <div className="flex justify-center mb-4 !bg-none !bg-cover !bg-center">
-            <div className="w-32 h-32 rounded-full border-4 border-background bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-xl">
+            <div className="rounded-full border-4 border-background bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-xl !bg-[url(https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/35628061-b292-41c0-8ec7-066778269a72/visual-edit-uploads/1762093575702-d8wa9x8wgdd.jpeg)] !bg-cover !bg-center !w-[43%] !h-full">
               <span className="text-4xl font-bold text-white">{userData.name.split(' ').map((n) => n[0]).join('')}</span>
             </div>
           </div>
