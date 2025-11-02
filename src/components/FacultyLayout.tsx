@@ -129,7 +129,7 @@ export default function FacultyLayout({ children }: {children: React.ReactNode;}
       <div className="relative -mt-24 pb-8 border-b bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4">
           {/* Profile image */}
-          <div className="flex justify-center mb-9">
+          <div className="flex justify-center mt-10">
             <div className="w-36 h-36 rounded-full border-4 border-background bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center shadow-2xl">
               <span className="text-5xl font-bold text-white">
                 {userData.name.split(' ').map((n) => n[0]).join('')}
