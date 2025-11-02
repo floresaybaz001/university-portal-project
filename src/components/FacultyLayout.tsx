@@ -126,11 +126,14 @@ export default function FacultyLayout({ children }: {children: React.ReactNode;}
       </div>
 
       {/* User Profile Section */}
-      <div className="relative -mt-32 pb-6 border-b bg-background/95 backdrop-blur">
+      <div className="relative -mt-32 pb-8 border-b bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4">
+          {/* Profile image */}
           <div className="flex justify-center mb-4">
-            <div className="w-32 h-32 rounded-full border-4 border-background bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center shadow-xl">
-              <span className="text-4xl font-bold text-white">{userData.name.split(' ').map((n) => n[0]).join('')}</span>
+            <div className="w-36 h-36 rounded-full border-4 border-background bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center shadow-2xl">
+              <span className="text-5xl font-bold text-white">
+                {userData.name.split(' ').map((n) => n[0]).join('')}
+              </span>
             </div>
           </div>
 
@@ -140,6 +143,7 @@ export default function FacultyLayout({ children }: {children: React.ReactNode;}
             <p className="text-sm text-muted-foreground">{userData.position}</p>
             <p className="text-sm font-medium">{userData.department}</p>
           </div>
+
 
           <nav className="flex items-center justify-center overflow-x-auto !w-[99.7%] !h-[83px]">
             <div className="inline-flex gap-2 p-1 bg-muted/50 rounded-full backdrop-blur">
