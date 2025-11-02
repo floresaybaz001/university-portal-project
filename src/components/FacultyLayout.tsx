@@ -126,7 +126,7 @@ export default function FacultyLayout({ children }: {children: React.ReactNode;}
       </div>
 
       {/* User Profile Section */}
-      <div className="relative -mt-32 pb-8 border-b bg-background/95 backdrop-blur">
+      <div className="relative -mt-1 pb-8 border-b bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4">
           {/* Profile image */}
           <div className="flex justify-center mb-4">
