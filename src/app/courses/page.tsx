@@ -1,73 +1,73 @@
-"use client"
+"use client";
 
-import DashboardSidebar from "@/components/DashboardSidebar"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { BookOpen, Download, FileText, Video, CheckCircle2 } from "lucide-react"
+import DashboardSidebar from "@/components/DashboardSidebar";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { BookOpen, Download, FileText, Video, CheckCircle2 } from "lucide-react";
 
 export default function CoursesPage() {
   const courses = [
-    {
-      id: 1,
-      code: "CS101",
-      name: "Introduction to Computer Science",
-      instructor: "Dr. Sarah Johnson",
-      credits: 3,
-      grade: "A",
-      progress: 85,
-      schedule: "MWF 10:00-11:00 AM",
-      room: "Room 204"
-    },
-    {
-      id: 2,
-      code: "MATH201",
-      name: "Calculus II",
-      instructor: "Prof. Michael Chen",
-      credits: 4,
-      grade: "A-",
-      progress: 78,
-      schedule: "TTh 2:00-3:30 PM",
-      room: "Room 105"
-    },
-    {
-      id: 3,
-      code: "PHYS150",
-      name: "Physics Laboratory",
-      instructor: "Dr. Emily Rodriguez",
-      credits: 2,
-      grade: "B+",
-      progress: 92,
-      schedule: "W 4:00-6:00 PM",
-      room: "Lab 3"
-    },
-    {
-      id: 4,
-      code: "ENG200",
-      name: "Technical Writing",
-      instructor: "Prof. James Wilson",
-      credits: 3,
-      grade: "A",
-      progress: 70,
-      schedule: "TTh 9:00-10:30 AM",
-      room: "Room 310"
-    },
-  ]
+  {
+    id: 1,
+    code: "CS101",
+    name: "Introduction to Computer Science",
+    instructor: "Dr. Sarah Johnson",
+    credits: 3,
+    grade: "A",
+    progress: 85,
+    schedule: "MWF 10:00-11:00 AM",
+    room: "Room 204"
+  },
+  {
+    id: 2,
+    code: "MATH201",
+    name: "Calculus II",
+    instructor: "Prof. Michael Chen",
+    credits: 4,
+    grade: "A-",
+    progress: 78,
+    schedule: "TTh 2:00-3:30 PM",
+    room: "Room 105"
+  },
+  {
+    id: 3,
+    code: "PHYS150",
+    name: "Physics Laboratory",
+    instructor: "Dr. Emily Rodriguez",
+    credits: 2,
+    grade: "B+",
+    progress: 92,
+    schedule: "W 4:00-6:00 PM",
+    room: "Lab 3"
+  },
+  {
+    id: 4,
+    code: "ENG200",
+    name: "Technical Writing",
+    instructor: "Prof. James Wilson",
+    credits: 3,
+    grade: "A",
+    progress: 70,
+    schedule: "TTh 9:00-10:30 AM",
+    room: "Room 310"
+  }];
+
 
   const materials = [
-    { type: "pdf", name: "Lecture Notes - Week 10", size: "2.4 MB" },
-    { type: "video", name: "Recorded Lecture - Arrays", size: "145 MB" },
-    { type: "pdf", name: "Assignment 5", size: "890 KB" },
-    { type: "pdf", name: "Study Guide - Midterm", size: "1.2 MB" },
-  ]
+  { type: "pdf", name: "Lecture Notes - Week 10", size: "2.4 MB" },
+  { type: "video", name: "Recorded Lecture - Arrays", size: "145 MB" },
+  { type: "pdf", name: "Assignment 5", size: "890 KB" },
+  { type: "pdf", name: "Study Guide - Midterm", size: "1.2 MB" }];
+
 
   const assignments = [
-    { name: "Programming Assignment 5", due: "Due in 3 days", status: "pending" },
-    { name: "Midterm Exam", due: "Due in 1 week", status: "pending" },
-    { name: "Lab Report 4", due: "Submitted", status: "completed" },
-  ]
+  { name: "Programming Assignment 5", due: "Due in 3 days", status: "pending" },
+  { name: "Midterm Exam", due: "Due in 1 week", status: "pending" },
+  { name: "Lab Report 4", due: "Submitted", status: "completed" }];
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -81,7 +81,7 @@ export default function CoursesPage() {
             <p className="text-muted-foreground">Manage your enrolled courses, grades, and materials</p>
           </div>
 
-          <Tabs defaultValue="enrolled" className="space-y-6">
+          <Tabs defaultValue="enrolled" className="space-y-6 !w-full !h-[1072px]">
             <TabsList>
               <TabsTrigger value="enrolled">Enrolled Courses</TabsTrigger>
               <TabsTrigger value="schedule">Class Schedule</TabsTrigger>
@@ -91,8 +91,8 @@ export default function CoursesPage() {
             {/* Enrolled Courses Tab */}
             <TabsContent value="enrolled" className="space-y-6">
               <div className="grid gap-6 md:grid-cols-2">
-                {courses.map((course) => (
-                  <Card key={course.id}>
+                {courses.map((course) =>
+                <Card key={course.id}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div>
@@ -125,7 +125,7 @@ export default function CoursesPage() {
                       </div>
                     </CardContent>
                   </Card>
-                ))}
+                )}
               </div>
 
               {/* Course Materials Section */}
@@ -136,14 +136,14 @@ export default function CoursesPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    {materials.map((material, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-lg">
+                    {materials.map((material, index) =>
+                    <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-lg">
                         <div className="flex items-center gap-3">
-                          {material.type === "pdf" ? (
-                            <FileText className="h-5 w-5 text-red-500" />
-                          ) : (
-                            <Video className="h-5 w-5 text-blue-500" />
-                          )}
+                          {material.type === "pdf" ?
+                        <FileText className="h-5 w-5 text-red-500" /> :
+
+                        <Video className="h-5 w-5 text-blue-500" />
+                        }
                           <div>
                             <p className="font-medium text-sm">{material.name}</p>
                             <p className="text-xs text-muted-foreground">{material.size}</p>
@@ -153,7 +153,7 @@ export default function CoursesPage() {
                           <Download className="h-4 w-4" />
                         </Button>
                       </div>
-                    ))}
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -168,8 +168,8 @@ export default function CoursesPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {courses.map((course) => (
-                      <div key={course.id} className="p-4 border rounded-lg">
+                    {courses.map((course) =>
+                    <div key={course.id} className="p-4 border rounded-lg">
                         <div className="flex justify-between items-start mb-2">
                           <div>
                             <h4 className="font-bold">{course.code} - {course.name}</h4>
@@ -188,7 +188,7 @@ export default function CoursesPage() {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -241,8 +241,8 @@ export default function CoursesPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {courses.map((course) => (
-                      <div key={course.id} className="flex items-center justify-between p-4 border rounded-lg">
+                    {courses.map((course) =>
+                    <div key={course.id} className="flex items-center justify-between p-4 border rounded-lg">
                         <div className="flex-1">
                           <h4 className="font-medium">{course.code} - {course.name}</h4>
                           <p className="text-sm text-muted-foreground">{course.credits} Credits • {course.instructor}</p>
@@ -253,7 +253,7 @@ export default function CoursesPage() {
                           </Badge>
                         </div>
                       </div>
-                    ))}
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -266,28 +266,28 @@ export default function CoursesPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    {assignments.map((assignment, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-lg">
+                    {assignments.map((assignment, index) =>
+                    <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-lg">
                         <div className="flex items-center gap-3">
-                          {assignment.status === "completed" ? (
-                            <CheckCircle2 className="h-5 w-5 text-green-500" />
-                          ) : (
-                            <FileText className="h-5 w-5 text-orange-500" />
-                          )}
+                          {assignment.status === "completed" ?
+                        <CheckCircle2 className="h-5 w-5 text-green-500" /> :
+
+                        <FileText className="h-5 w-5 text-orange-500" />
+                        }
                           <div>
                             <p className="font-medium text-sm">{assignment.name}</p>
                             <p className="text-xs text-muted-foreground">{assignment.due}</p>
                           </div>
                         </div>
-                        {assignment.status === "completed" ? (
-                          <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                        {assignment.status === "completed" ?
+                      <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
                             Completed
-                          </Badge>
-                        ) : (
-                          <Button size="sm">Submit</Button>
-                        )}
+                          </Badge> :
+
+                      <Button size="sm">Submit</Button>
+                      }
                       </div>
-                    ))}
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -295,6 +295,6 @@ export default function CoursesPage() {
           </Tabs>
         </div>
       </main>
-    </div>
-  )
+    </div>);
+
 }
