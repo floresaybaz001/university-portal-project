@@ -1,4 +1,4 @@
-import FacultySidebar from "@/components/FacultySidebar"
+import FacultyLayout from "@/components/FacultyLayout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -49,95 +49,92 @@ export default function FacultyGradingPage() {
   ]
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <FacultySidebar />
-      <main className="flex-1 lg:ml-64 p-8">
-        <div className="max-w-7xl mx-auto space-y-8">
-          <div>
-            <h1 className="text-3xl font-bold">Grading</h1>
-            <p className="text-muted-foreground mt-2">Review and grade student submissions</p>
-          </div>
+    <FacultyLayout>
+      <div className="max-w-7xl mx-auto space-y-8">
+        <div>
+          <h1 className="text-3xl font-bold">Grading</h1>
+          <p className="text-muted-foreground mt-2">Review and grade student submissions</p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader className="pb-3">
-                <CardDescription>Pending Submissions</CardDescription>
-                <CardTitle className="text-3xl">187</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">Awaiting your review</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardDescription>Graded This Week</CardDescription>
-                <CardTitle className="text-3xl">56</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">Average grade: 82%</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="pb-3">
-                <CardDescription>Due This Week</CardDescription>
-                <CardTitle className="text-3xl">3</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">Grading deadlines</p>
-              </CardContent>
-            </Card>
-          </div>
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card>
-            <CardHeader>
-              <CardTitle>Pending Assignments</CardTitle>
-              <CardDescription>Submissions waiting for your review</CardDescription>
+            <CardHeader className="pb-3">
+              <CardDescription>Pending Submissions</CardDescription>
+              <CardTitle className="text-3xl">187</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              {pendingGrades.map((item) => (
-                <div key={item.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <ClipboardList className="h-4 w-4 text-muted-foreground" />
-                      <h3 className="font-semibold">{item.assignment}</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{item.course}</p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <span>{item.submissions} submissions</span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3" />
-                        Due: {item.dueDate}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant={item.priority === "High" ? "destructive" : "secondary"}>
-                      {item.priority}
-                    </Badge>
-                    <Button>Grade Now</Button>
-                  </div>
-                </div>
-              ))}
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Awaiting your review</p>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader className="pb-3">
+              <CardDescription>Graded This Week</CardDescription>
+              <CardTitle className="text-3xl">56</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Average grade: 82%</p>
             </CardContent>
           </Card>
 
-          <Card className="border-orange-200 bg-orange-50 dark:bg-orange-950/20">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <AlertCircle className="h-5 w-5 text-orange-600" />
-                <CardTitle className="text-orange-900 dark:text-orange-100">Grading Reminders</CardTitle>
-              </div>
+          <Card>
+            <CardHeader className="pb-3">
+              <CardDescription>Due This Week</CardDescription>
+              <CardTitle className="text-3xl">3</CardTitle>
             </CardHeader>
-            <CardContent className="text-orange-800 dark:text-orange-200 space-y-2">
-              <p className="text-sm">• Midterm grades due by November 20th</p>
-              <p className="text-sm">• Final project grading rubric needs to be published</p>
-              <p className="text-sm">• 3 grade appeals pending review</p>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Grading deadlines</p>
             </CardContent>
           </Card>
         </div>
-      </main>
-    </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Pending Assignments</CardTitle>
+            <CardDescription>Submissions waiting for your review</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {pendingGrades.map((item) => (
+              <div key={item.id} className="flex items-center justify-between p-4 border rounded-lg">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <ClipboardList className="h-4 w-4 text-muted-foreground" />
+                    <h3 className="font-semibold">{item.assignment}</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{item.course}</p>
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <span>{item.submissions} submissions</span>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="h-3 w-3" />
+                      Due: {item.dueDate}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge variant={item.priority === "High" ? "destructive" : "secondary"}>
+                    {item.priority}
+                  </Badge>
+                  <Button>Grade Now</Button>
+                </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="border-orange-200 bg-orange-50 dark:bg-orange-950/20">
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <AlertCircle className="h-5 w-5 text-orange-600" />
+              <CardTitle className="text-orange-900 dark:text-orange-100">Grading Reminders</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="text-orange-800 dark:text-orange-200 space-y-2">
+            <p className="text-sm">• Midterm grades due by November 20th</p>
+            <p className="text-sm">• Final project grading rubric needs to be published</p>
+            <p className="text-sm">• 3 grade appeals pending review</p>
+          </CardContent>
+        </Card>
+      </div>
+    </FacultyLayout>
   )
 }

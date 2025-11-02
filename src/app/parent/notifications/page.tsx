@@ -1,4 +1,4 @@
-import ParentSidebar from "@/components/ParentSidebar"
+import ParentLayout from "@/components/ParentLayout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -105,103 +105,100 @@ export default function ParentNotificationsPage() {
   const unreadCount = notifications.filter(n => !n.read).length
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <ParentSidebar />
-      <main className="flex-1 lg:ml-64 p-8">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold">Notifications</h1>
-              <p className="text-muted-foreground mt-2">Stay updated on your child's academic activities</p>
-            </div>
-            <Button variant="outline">
-              Mark All as Read
-            </Button>
+    <ParentLayout>
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold">Notifications</h1>
+            <p className="text-muted-foreground mt-2">Stay updated on your child's academic activities</p>
           </div>
+          <Button variant="outline">
+            Mark All as Read
+          </Button>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader className="pb-3">
-                <CardDescription>Unread</CardDescription>
-                <CardTitle className="text-3xl">{unreadCount}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">New notifications</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardDescription>This Week</CardDescription>
-                <CardTitle className="text-3xl">5</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">Recent updates</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="pb-3">
-                <CardDescription>Total</CardDescription>
-                <CardTitle className="text-3xl">{notifications.length}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">All notifications</p>
-              </CardContent>
-            </Card>
-          </div>
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Bell className="h-5 w-5" />
-                All Notifications
-              </CardTitle>
-              <CardDescription>Recent updates and alerts</CardDescription>
+            <CardHeader className="pb-3">
+              <CardDescription>Unread</CardDescription>
+              <CardTitle className="text-3xl">{unreadCount}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
-                {notifications.map((notification) => (
-                  <div 
-                    key={notification.id} 
-                    className={`p-4 border rounded-lg ${!notification.read ? 'bg-accent' : ''}`}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className={`p-2 rounded-full ${getBgColor(notification.type)}`}>
-                        {getIcon(notification.type)}
-                      </div>
-                      <div className="flex-1 space-y-2">
-                        <div className="flex items-start justify-between">
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-2">
-                              <h3 className="font-semibold">{notification.title}</h3>
-                              {!notification.read && (
-                                <Badge variant="default" className="text-xs">New</Badge>
-                              )}
-                            </div>
-                            <p className="text-sm text-muted-foreground">{notification.message}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <p className="text-xs text-muted-foreground flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            {notification.date} at {notification.time}
-                          </p>
-                          {!notification.read && (
-                            <Button variant="ghost" size="sm">
-                              Mark as Read
-                            </Button>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <p className="text-sm text-muted-foreground">New notifications</p>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader className="pb-3">
+              <CardDescription>This Week</CardDescription>
+              <CardTitle className="text-3xl">5</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Recent updates</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <CardDescription>Total</CardDescription>
+              <CardTitle className="text-3xl">{notifications.length}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">All notifications</p>
             </CardContent>
           </Card>
         </div>
-      </main>
-    </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Bell className="h-5 w-5" />
+              All Notifications
+            </CardTitle>
+            <CardDescription>Recent updates and alerts</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {notifications.map((notification) => (
+                <div 
+                  key={notification.id} 
+                  className={`p-4 border rounded-lg ${!notification.read ? 'bg-accent' : ''}`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className={`p-2 rounded-full ${getBgColor(notification.type)}`}>
+                      {getIcon(notification.type)}
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <div className="flex items-start justify-between">
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2">
+                            <h3 className="font-semibold">{notification.title}</h3>
+                            {!notification.read && (
+                              <Badge variant="default" className="text-xs">New</Badge>
+                            )}
+                          </div>
+                          <p className="text-sm text-muted-foreground">{notification.message}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs text-muted-foreground flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {notification.date} at {notification.time}
+                        </p>
+                        {!notification.read && (
+                          <Button variant="ghost" size="sm">
+                            Mark as Read
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </ParentLayout>
   )
 }
