@@ -116,13 +116,13 @@ export default function FacultyLayout({ children }: {children: React.ReactNode;}
       </header>
 
       {/* Hero Banner */}
-      <div className="relative w-full h-64 bg-gradient-to-r from-blue-600 via-sky-500 to-blue-400">
+      <div className="relative w-full h-64">
         <img
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/DSC_6533-1-1762092607263.jpg?width=8000&height=8000&resize=contain"
           alt="Campus"
           className="w-full h-full object-cover" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-sky-500/40 to-blue-400/40" />
+        <div className="absolute inset-0" />
       </div>
 
       {/* User Profile Section */}
