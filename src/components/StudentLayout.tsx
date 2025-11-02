@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { 
-  GraduationCap, 
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  GraduationCap,
   User,
   Settings,
   Moon,
@@ -18,34 +18,34 @@ import {
   Calendar,
   CreditCard,
   UserCircle,
-  SettingsIcon
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
+  SettingsIcon } from
+"lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { cn } from "@/lib/utils"
-import { useTheme } from "next-themes"
+  DropdownMenuTrigger } from
+"@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 const navItems = [
-  { label: "Dashboard", href: "/dashboard", icon: Home },
-  { label: "My Courses", href: "/courses", icon: BookOpen },
-  { label: "Services", href: "/services", icon: FileText },
-  { label: "Calendar", href: "/calendar", icon: Calendar },
-  { label: "Payments", href: "/payments", icon: CreditCard },
-  { label: "Profile", href: "/profile", icon: UserCircle },
-  { label: "Settings", href: "/settings", icon: SettingsIcon },
-]
+{ label: "Dashboard", href: "/dashboard", icon: Home },
+{ label: "My Courses", href: "/courses", icon: BookOpen },
+{ label: "Services", href: "/services", icon: FileText },
+{ label: "Calendar", href: "/calendar", icon: Calendar },
+{ label: "Payments", href: "/payments", icon: CreditCard },
+{ label: "Profile", href: "/profile", icon: UserCircle },
+{ label: "Settings", href: "/settings", icon: SettingsIcon }];
 
-export default function StudentLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname()
-  const router = useRouter()
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+
+export default function StudentLayout({ children }: {children: React.ReactNode;}) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   // User data - in real app, this would come from auth context
   const userData = {
@@ -54,11 +54,11 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
     email: "john.doe@university.edu",
     program: "Bachelor of Science",
     major: "Computer Science"
-  }
+  };
 
   const handleLogout = () => {
-    router.push("/auth")
-  }
+    router.push("/auth");
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -81,7 +81,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-medium">
-                  {userData.name.split(' ').map(n => n[0]).join('')}
+                  {userData.name.split(' ').map((n) => n[0]).join('')}
                 </div>
                 <ChevronDown className="h-4 w-4" />
               </Button>
@@ -93,17 +93,17 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
               </div>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-                {theme === "dark" ? (
-                  <>
+                {theme === "dark" ?
+                <>
                     <Sun className="mr-2 h-4 w-4" />
                     <span>Light Mode</span>
-                  </>
-                ) : (
-                  <>
+                  </> :
+
+                <>
                     <Moon className="mr-2 h-4 w-4" />
                     <span>Dark Mode</span>
                   </>
-                )}
+                }
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Key className="mr-2 h-4 w-4" />
@@ -121,11 +121,11 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
 
       {/* Hero Banner */}
       <div className="relative w-full h-64 bg-gradient-to-r from-blue-600 to-purple-600">
-        <img 
+        <img
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/DSC_6533-1-1762092607263.jpg?width=8000&height=8000&resize=contain"
           alt="Campus"
-          className="w-full h-full object-cover"
-        />
+          className="w-full h-full object-cover" />
+
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
@@ -133,9 +133,9 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
       <div className="relative -mt-16 pb-6 border-b bg-background">
         <div className="container mx-auto px-4">
           {/* Profile Picture */}
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-4 !bg-none !bg-cover !bg-center">
             <div className="w-32 h-32 rounded-full border-4 border-background bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-xl">
-              <span className="text-4xl font-bold text-white">{userData.name.split(' ').map(n => n[0]).join('')}</span>
+              <span className="text-4xl font-bold text-white">{userData.name.split(' ').map((n) => n[0]).join('')}</span>
             </div>
           </div>
 
@@ -151,24 +151,24 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
           <nav className="flex items-center justify-center">
             <div className="inline-flex gap-2 p-1 bg-muted rounded-full">
               {navItems.map((item) => {
-                const Icon = item.icon
-                const isActive = pathname === item.href
-                
+                const Icon = item.icon;
+                const isActive = pathname === item.href;
+
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
                     className={cn(
                       "flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all",
-                      isActive 
-                        ? "bg-primary text-primary-foreground shadow-sm" 
-                        : "hover:bg-background hover:text-foreground text-muted-foreground"
-                    )}
-                  >
+                      isActive ?
+                      "bg-primary text-primary-foreground shadow-sm" :
+                      "hover:bg-background hover:text-foreground text-muted-foreground"
+                    )}>
+
                     <Icon className="h-4 w-4" />
                     <span>{item.label}</span>
-                  </Link>
-                )
+                  </Link>);
+
               })}
             </div>
           </nav>
@@ -179,6 +179,6 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
       <main className="container mx-auto px-4 py-8">
         {children}
       </main>
-    </div>
-  )
+    </div>);
+
 }
