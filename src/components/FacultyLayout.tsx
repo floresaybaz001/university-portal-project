@@ -141,7 +141,7 @@ export default function FacultyLayout({ children }: {children: React.ReactNode;}
             <p className="text-sm font-medium">{userData.department}</p>
           </div>
 
-          <nav className="flex items-center justify-center overflow-x-auto !w-[1276px] !h-[83px]">
+          <nav className="flex items-center justify-center overflow-x-auto !w-[99.7%] !h-[83px]">
             <div className="inline-flex gap-2 p-1 bg-muted/50 rounded-full backdrop-blur">
               {navItems.map((item) => {
                 const Icon = item.icon;
