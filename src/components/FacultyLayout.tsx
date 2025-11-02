@@ -116,7 +116,7 @@ export default function FacultyLayout({ children }: {children: React.ReactNode;}
       </header>
 
       {/* Hero Banner */}
-      <div className="relative w-full h-64">
+      <div className="relative w-full h-90">
         <img
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/DSC_6533-1-1762092607263.jpg?width=8000&height=8000&resize=contain"
           alt="Campus"
