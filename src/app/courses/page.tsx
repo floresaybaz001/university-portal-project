@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, Download, FileText, Video, CheckCircle2 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { BookOpen, Download, FileText, Video, CheckCircle2, RefreshCw } from "lucide-react";
 
 export default function CoursesPage() {
   const courses = [
@@ -17,6 +19,8 @@ export default function CoursesPage() {
     instructor: "Dr. Sarah Johnson",
     credits: 3,
     grade: "A",
+    equivalentGrade: "1.00",
+    remark: "Passed",
     progress: 85,
     schedule: "MWF 10:00-11:00 AM",
     room: "Room 204"
@@ -28,6 +32,8 @@ export default function CoursesPage() {
     instructor: "Prof. Michael Chen",
     credits: 4,
     grade: "A-",
+    equivalentGrade: "1.25",
+    remark: "Passed",
     progress: 78,
     schedule: "TTh 2:00-3:30 PM",
     room: "Room 105"
@@ -39,6 +45,8 @@ export default function CoursesPage() {
     instructor: "Dr. Emily Rodriguez",
     credits: 2,
     grade: "B+",
+    equivalentGrade: "1.75",
+    remark: "Passed",
     progress: 92,
     schedule: "W 4:00-6:00 PM",
     room: "Lab 3"
@@ -50,6 +58,8 @@ export default function CoursesPage() {
     instructor: "Prof. James Wilson",
     credits: 3,
     grade: "A",
+    equivalentGrade: "1.00",
+    remark: "Passed",
     progress: 70,
     schedule: "TTh 9:00-10:30 AM",
     room: "Room 310"
@@ -235,21 +245,68 @@ export default function CoursesPage() {
                 <CardTitle>Course Grades</CardTitle>
                 <CardDescription>Current semester performance</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {courses.map((course) =>
-                  <div key={course.id} className="flex items-center justify-between p-4 border rounded-lg">
-                      <div className="flex-1">
-                        <h4 className="font-medium">{course.code} - {course.name}</h4>
-                        <p className="text-sm text-muted-foreground">{course.credits} Credits • {course.instructor}</p>
-                      </div>
-                      <div className="text-right">
-                        <Badge variant={course.grade.startsWith("A") ? "default" : "secondary"} className="text-lg px-4">
-                          {course.grade}
-                        </Badge>
-                      </div>
-                    </div>
-                  )}
+              <CardContent className="space-y-6">
+                {/* Header Controls Section */}
+                <div className="flex flex-wrap items-center gap-4 p-4 bg-muted/50 rounded-lg">
+                  <div className="flex-1 min-w-[200px]">
+                    <Select defaultValue="1st-sem-2025-2026">
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select academic period" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1st-sem-2025-2026">1st Semester 2025–2026</SelectItem>
+                        <SelectItem value="2nd-sem-2024-2025">2nd Semester 2024–2025</SelectItem>
+                        <SelectItem value="1st-sem-2024-2025">1st Semester 2024–2025</SelectItem>
+                        <SelectItem value="2nd-sem-2023-2024">2nd Semester 2023–2024</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <Button variant="outline" size="default" className="gap-2">
+                    <RefreshCw className="h-4 w-4" />
+                    Refresh
+                  </Button>
+                  <Button variant="default" size="default" className="gap-2">
+                    <Download className="h-4 w-4" />
+                    Download Report of Grades (PDF)
+                  </Button>
+                </div>
+
+                {/* Report of Grades Table */}
+                <div className="border rounded-lg overflow-hidden">
+                  <Table>
+                    <TableHeader>
+                      <TableRow className="bg-muted/50">
+                        <TableHead className="font-semibold">Course Code</TableHead>
+                        <TableHead className="font-semibold">Course Name</TableHead>
+                        <TableHead className="font-semibold">Instructor</TableHead>
+                        <TableHead className="font-semibold text-center">Final Grade</TableHead>
+                        <TableHead className="font-semibold text-center">Equivalent Grade</TableHead>
+                        <TableHead className="font-semibold text-center">Units</TableHead>
+                        <TableHead className="font-semibold text-center">Remark</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {courses.map((course) => (
+                        <TableRow key={course.id}>
+                          <TableCell className="font-medium">{course.code}</TableCell>
+                          <TableCell>{course.name}</TableCell>
+                          <TableCell>{course.instructor}</TableCell>
+                          <TableCell className="text-center">
+                            <Badge variant={course.grade.startsWith("A") ? "default" : "secondary"}>
+                              {course.grade}
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="text-center font-medium">{course.equivalentGrade}</TableCell>
+                          <TableCell className="text-center">{course.credits}</TableCell>
+                          <TableCell className="text-center">
+                            <span className="text-green-600 dark:text-green-400 font-medium">
+                              {course.remark}
+                            </span>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
                 </div>
               </CardContent>
             </Card>
