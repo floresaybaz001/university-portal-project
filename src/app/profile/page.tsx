@@ -1,42 +1,42 @@
-"use client"
+"use client";
 
-import StudentLayout from "@/components/StudentLayout"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Switch } from "@/components/ui/switch"
-import { Separator } from "@/components/ui/separator"
-import { 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
+import StudentLayout from "@/components/StudentLayout";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
+import { Separator } from "@/components/ui/separator";
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
   Calendar,
   Award,
   GraduationCap,
   Settings,
   Bell,
   Lock,
-  Eye
-} from "lucide-react"
+  Eye } from
+"lucide-react";
 
 export default function ProfilePage() {
   const academicHistory = [
-    { semester: "Fall 2023", gpa: "3.92", credits: 18, status: "Completed" },
-    { semester: "Spring 2023", gpa: "3.75", credits: 18, status: "Completed" },
-    { semester: "Fall 2022", gpa: "3.68", credits: 15, status: "Completed" },
-    { semester: "Spring 2022", gpa: "3.82", credits: 15, status: "Completed" },
-  ]
+  { semester: "Fall 2023", gpa: "3.92", credits: 18, status: "Completed" },
+  { semester: "Spring 2023", gpa: "3.75", credits: 18, status: "Completed" },
+  { semester: "Fall 2022", gpa: "3.68", credits: 15, status: "Completed" },
+  { semester: "Spring 2022", gpa: "3.82", credits: 15, status: "Completed" }];
+
 
   const achievements = [
-    { title: "Dean's List", semester: "Fall 2023", type: "Academic" },
-    { title: "Outstanding Student Award", semester: "Spring 2023", type: "Award" },
-    { title: "Research Assistant", semester: "Fall 2023", type: "Position" },
-  ]
+  { title: "Dean's List", semester: "Fall 2023", type: "Academic" },
+  { title: "Outstanding Student Award", semester: "Spring 2023", type: "Award" },
+  { title: "Research Assistant", semester: "Fall 2023", type: "Position" }];
+
 
   return (
     <StudentLayout>
@@ -53,7 +53,7 @@ export default function ProfilePage() {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
               <Avatar className="h-24 w-24">
                 <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" />
-                <AvatarFallback>JD</AvatarFallback>
+                <AvatarFallback></AvatarFallback>
               </Avatar>
               <div className="flex-1 text-center md:text-left">
                 <h2 className="text-2xl font-bold">John Doe</h2>
@@ -241,8 +241,8 @@ export default function ProfilePage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {academicHistory.map((record, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
+                  {academicHistory.map((record, index) =>
+                  <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
                       <div>
                         <h4 className="font-semibold">{record.semester}</h4>
                         <p className="text-sm text-muted-foreground">{record.credits} Credits</p>
@@ -254,30 +254,7 @@ export default function ProfilePage() {
                         </Badge>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Award className="h-5 w-5" />
-                  Achievements & Awards
-                </CardTitle>
-                <CardDescription>Recognition and accomplishments</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {achievements.map((achievement, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-muted rounded-lg">
-                      <div>
-                        <h4 className="font-medium">{achievement.title}</h4>
-                        <p className="text-sm text-muted-foreground">{achievement.semester}</p>
-                      </div>
-                      <Badge>{achievement.type}</Badge>
-                    </div>
-                  ))}
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -442,6 +419,6 @@ export default function ProfilePage() {
           </TabsContent>
         </Tabs>
       </div>
-    </StudentLayout>
-  )
+    </StudentLayout>);
+
 }
